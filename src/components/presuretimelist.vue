@@ -48,13 +48,12 @@
 </template>
 <script>
 import Bus from "@/bus.js";
-import alltime from "@/const/const";
 export default {
   name: "presuretimelist",
   inject: ['reload2'],
   data() {
     return {
-      alltimetable: alltime.alltime,
+  /*     alltimetable: alltime.alltime, */
       /* table */
       headerStyle() {
         return {
@@ -125,7 +124,7 @@ export default {
       let timetableallnumarr = [];
       for (var i = 0; i < timetable.length; i++) {
         /**
-         * 时间转为分
+         * 时间getlastdata转为分
          * @param time 时间(00:00:00)
          * @returns {string} 时间戳（单位：分）
          */
@@ -160,14 +159,19 @@ export default {
     );//数组去重结束
  /*  console.log("%c数组去重后arr2", "color:green", arr2); */
   //创建一个length为1440的全部时间数组，间隔为一分钟
-  var defaltalltimetable=this.alltimetable
+  var defaltalltimetable=[]
+  for(let i=0;i<1440;i++){
+  defaltalltimetable.push(0)
+}
+
+   console.log("%c默认defaltalltimetable", "color:green",defaltalltimetable);
   /* 遍历一维数组按指定项替换全部的时间数组，并返回新的数组 */
     for(var i=0;i<arr2.length;i++){
-        var Time=defaltalltimetable[arr2[i]].Time
+      /*   var Time=defaltalltimetable[arr2[i]].Time
         var Type=1
-        var newobj={Time,Type}
+        var newobj={Time,Type} */
     // 替换 
-    var replace = defaltalltimetable.splice(arr2[i],1,newobj); //删除1项，插入两项 
+    var replace = defaltalltimetable.splice(arr2[i],1,6); //删除1项，插入两项 
     }
     /* 重新整合的数组defaltalltimetable即为满足需求的数组 */
      console.log("%c替换后defaltalltimetable", "color:green",defaltalltimetable);
@@ -185,7 +189,7 @@ export default {
   align-items: flex-start;
   height: 316px;
   width: 35.5vw;
-  margin-left: 200px;
+  margin-left: 50px;
   /*  background-color: #1b4b85; */
   .outbox_topoutbox {
     display: flex;

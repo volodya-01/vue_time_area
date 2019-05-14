@@ -1,13 +1,6 @@
 <template>
   <div class="outbox">
-    <div class="outbox_topoutbox">
-        <div class="outbox_topoutbox_inbox">
-           <!-- 指针线 -->
-          <div id="dialogslidingImglineadd"></div>
-        <!--   <echarts/> -->
-       </div>
-    </div>
-    <div class="outbox_centeroutbox">
+  <!--   <div class="outbox_centeroutbox">
       <div class="outbox_centeroutbox_inbox">
         <div
           v-for="(item,index) in alltimearr"
@@ -16,7 +9,7 @@
           :class="item.Type==1?'eventactive':''"
         ></div>
       </div>
-    </div>
+    </div> -->
     <div class="outbox_downoutbox">
         <div class="outbox_downoutbox_inboxnum">
          <div
@@ -37,7 +30,6 @@
   </div>
 </template>
 <script>
-import alltime from '@/const/const'
 import Bus from "@/bus.js";
 export default {
   name: "echartsbox",
@@ -49,7 +41,6 @@ export default {
     return {
       indexline:1,
       type: [],
-      alltimetable:alltime.alltime,
       alltimearr:[]
     };
   },
@@ -72,14 +63,14 @@ export default {
       this.type.push(a)
     };
      let self = this;
-    self.LopTime();
+   /*  self.LopTime();
     setInterval(function() {
       var mindata = new Date().getHours() * 60 + new Date().getMinutes();
       if (mindata % 15 == 0) {
         self.LopTime();
         console.log(mindata);
       }
-    }, 60000); 
+    }, 60000);  */
 
   },
   methods:{
@@ -106,38 +97,13 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  height: 193px;
+  height: 28px;
   width: 35.5vw;
-  border: 1px solid #6e7b8b;
-  margin-left: 200px
+/*   border: 1px solid #6e7b8b; */
+  margin-left: 50px
   /*     background-color: #6e7b8b */
 }
-.outbox_topoutbox {
-   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  height: 134px;
-  width: 35.5vw;
-  margin-top: 11px
-/*   background-color: #1978ec; */
-}
-.outbox_topoutbox_inbox{
- height: 134px;
-  width: 658px;
-  margin-right: 20px;
-    position: relative;
-/*   background-color: #e8ecec; */
-}
-#dialogslidingImglineadd {
-  width: 1px;
-  height: 94px;
-  background-color: red;
-  position: absolute;
-  bottom: 5px;
-  left: 30px;
-  z-index: 99;
-}
+
 .outbox_centeroutbox {
   display: flex;
   flex-direction: row;
@@ -184,10 +150,12 @@ export default {
   height: 12px;
   /* width: 631px; */
   /* width: 32.865vw; */
-  width: 32.657vw;
+ /*  width: 32.657vw; */
+  width: 34vw;
   font: normal 10px/4px "微软雅黑";
   color:#6e7b8b;
-  margin-right: 22px;
+  margin-right: -5px;
+  text-align: start;
 }
 .outbox_downoutbox_inbox{
     display: flex;
